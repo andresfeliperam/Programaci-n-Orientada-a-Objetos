@@ -1,0 +1,249 @@
+Ejercicio #4 
+
+A la mamá de Juan le preguntan su edad, y contesta: tengo 3 hijos, Juan tiene 9 años. Alberto tiene 2/3 de la edad de Juan, Ana tiene 4/3 de la edad de Juan y mi edad es la suma de las tres. 
+
+public class Edades { 
+
+public static double calcular_alber(double juan){ 
+
+    	double alber = 2*juan/3; 
+
+    	return alber; 
+
+    	} 
+
+public static double calcular_ana(double juan){ 
+
+    	double ana = 4*juan/3; 
+
+    	return ana; 
+
+    	} 
+
+public static double calcular_mama(double juan, double alber, double ana){ 
+
+    	double mama = juan+ana+alber; 
+
+    	return mama; 
+
+    	} 
+
+} 
+
+ 
+
+public class Ejercicio4 { 
+
+public static void main(String[] args) { 
+
+        	double juan = 9; 
+
+        	double alber = Edades.calcular_alber(juan); 
+
+        	double ana = Edades.calcular_ana(juan); 
+
+        	double mama = Edades.calcular_mama(juan, alber, ana); 
+
+System.out.println("Las edades son: Juan="+juan+", Alber="+alber+", Ana="+ana+", Mamá="+mama); 
+
+    	} 
+
+} 
+
+ 
+
+Ejercicio #5 
+
+Hacer un seguimiento (prueba de escritorio) del siguiente grupo de instrucciones. INICIO, SUMA = 0, X=20, SUMA = SUMA + X, Y= 40, X=X+Y ** 2, SUMA = SUMA + X/Y, ESCRIBA: "EL VALOR DE LA SUMA ES:" SUMA, FIN_INICIO. 
+
+public class Calculos { 
+
+public static double calcular_suma1(double suma, double x){ 
+
+   	return suma + x; 
+
+} 
+
+public static double calcular_x(double x, double y){ 
+
+    	return x + Math.pow(y, 2); 
+
+}     
+
+ 	public static double calcular_suma2(double x, double y, double suma){ 
+
+    	return suma + x/y; 
+
+}   
+
+ } 
+
+ 
+
+public class Ejercicio5 { 
+
+public static void main(String[] args) { 
+
+        	double suma, x, y; 
+
+        	suma = 0; 
+
+        	x = 20; 
+
+        	y = 40;      
+
+        	suma = Calculos.calcular_suma1(suma, x);        
+
+        	x = Calculos.calcular_x(x, y); 
+
+        	suma = Calculos.calcular_suma2(x, y, suma); 
+
+        	System.out.println("Valor de x: "+x); 
+
+        	System.out.println("Valor de y: "+y); 
+
+        	System.out.println("Valor de la suma es: "+suma); 
+
+    	} 
+
+} 
+
+ 
+
+Ejercicio #12 
+
+Un empleado trabaja 48 horas en la semana a razón de $5.000 hora. El porcentaje de retención en la fuente es del 12,5% del salario bruto. Se desea saber cuál es el salario bruto, la retención en la fuente y el salario neto del trabajador. 
+
+public class Nomina {     
+
+public static double calcular_salario_bruto(double horas_trabajadas, double valor_hora){ 
+
+    	return horas_trabajadas * valor_hora; 
+
+    	} 
+
+public static double calcular_valor_retefuente(double porcentaje_retefuente, double salario_bruto){ 
+
+    	return porcentaje_retefuente * salario_bruto; 
+
+    	} 
+
+public static double calcular_salario_neto(double salario_bruto, double valor_retefuente){ 
+
+    	return salario_bruto - valor_retefuente; 
+
+    	} 
+
+} 
+
+ 
+
+public class Ejercicio12 { 
+
+public static void main(String[] args) { 
+
+        	double horas_trabajadas = 48; 
+
+        	double valor_hora = 5000; 
+
+        	double porcentaje_retefuente = 0.125; 
+
+double salario_bruto = Nomina.calcular_salario_bruto(horas_trabajadas, valor_hora); 
+
+double valor_retefuente = Nomina.calcular_valor_retefuente(porcentaje_retefuente, salario_bruto); 
+
+double salario_neto = Nomina.calcular_salario_neto(salario_bruto, valor_retefuente); 
+
+        	System.out.println("Salario bruto: " + salario_bruto); 
+
+        	System.out.println("Retención en la fuente: " + valor_retefuente); 
+
+        	System.out.println("Salario neto: " + salario_neto); 
+
+        	} 
+
+} 
+
+ 
+
+Ejercicio #14 
+
+Elabore un algoritmo que lea un número y obtenga su cuadrado y su cubo. 
+
+public class Calculos { 
+
+public static double calcular_cuadrado(double numero){ 
+
+    	return Math.pow(numero, 2); 
+
+}  
+
+public static double calcular_cubo(double numero){ 
+
+    	return Math.pow(numero, 3); 
+
+} 
+
+  
+
+} 
+
+ 
+
+public class Ejercicio14 { 
+
+public static void main(String[] args) { 
+
+        	double numero = 4; 
+
+        	double cuadrado = Calculos.calcular_cuadrado(numero); 
+
+        	double cubo = Calculos.calcular_cubo(numero); 
+
+        	System.out.println("Cuadrado: "+cuadrado); 
+
+        	System.out.println("Cubo: "+cubo); 
+
+} 
+
+} 
+
+ 
+
+Ejercicio #17 
+
+Dado el radio de un círculo. Haga un algoritmo que obtenga el área del círculo y la longitud de la circunferencia. 
+
+ 
+
+public class Calculos { 
+
+public static double calcular_longitud_circunferencia(double radio){ return 2 * Math.PI * radio; } 
+
+public static double calcular_area_circulo(double radio){ return Math.PI * Math.pow(radio, 2); } 
+
+} 
+
+ 
+
+public class Ejercicio17 { 
+
+public static void main(String[] args) { 
+
+        	double radio = 3; 
+
+        	double longitud_circuferencia = Calculos.calcular_longitud_circunferencia(radio); 
+
+        	double area_circulo = Calculos.calcular_area_circulo(radio); 
+
+        	System.out.println("Longitud circunferencia: "+longitud_circuferencia); 
+
+        	System.out.println("Área círculo: "+area_circulo); 
+
+ 	} 
+
+} 
+
+ 
+
+ 
