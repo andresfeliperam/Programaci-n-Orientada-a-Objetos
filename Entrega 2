@@ -1,0 +1,554 @@
+---------------------------------- EJERCICIO 2.1 PAGINA 63 ----------------------------------
+
+import java.util.Scanner;
+
+public class Ejercicio21_Pag63 {
+
+    public static void main(String[] args) {
+        String nombre;
+        String apellidos;
+        String númeroDocumentoIdentidad;
+        int añoNacimiento;
+        
+        Scanner entrada = new Scanner(System.in);
+        
+        System.out.println("Ingrese el nombre: ");
+        nombre = entrada.next();
+        
+        System.out.println("Ingrese el apellido: ");
+        apellidos = entrada.next();
+        
+        System.out.println("Ingrese el número de id: ");
+        númeroDocumentoIdentidad = entrada.next();
+        
+        System.out.println("Ingrese el año de nacimiento: ");
+        añoNacimiento = entrada.nextInt();                   
+    
+        Persona p1 = new Persona(nombre,apellidos,númeroDocumentoIdentidad,añoNacimiento);
+        p1.imprimir();
+    }
+}
+
+public class Persona {
+    String nombre;
+    String apellidos;
+    String númeroDocumentoIdentidad;
+    int añoNacimiento;
+    
+    Persona(String nombre, String apellidos, String númeroDocumentoIdentidad, int añoNacimiento) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.númeroDocumentoIdentidad = númeroDocumentoIdentidad;
+        this.añoNacimiento = añoNacimiento;
+        }
+    
+    void imprimir() {
+        System.out.println("Nombre = " + nombre);
+        System.out.println("Apellidos = " + apellidos);
+        System.out.println("Número de documento de identidad = " + númeroDocumentoIdentidad);
+        System.out.println("Año de nacimiento = " + añoNacimiento);
+        System.out.println();
+        }        
+}
+
+---------------------------------- EJERCICIO 2.2 PAGINA 66 ----------------------------------
+
+import java.util.Scanner;
+
+public class Ejercicio22_Pag66 {
+
+    public static void main(String args[]) {
+        
+        String nombre;
+        int cantidadSatélites;
+        double masa;
+        double volumen;
+        int diámetro;
+        int distanciaSol;
+        
+        Scanner entrada = new Scanner(System.in);
+        
+        System.out.println("Ingrese el nombre: ");
+        nombre = entrada.next();
+        
+        System.out.println("Ingrese la cantidad de satelites: ");
+        cantidadSatélites = entrada.nextInt();
+        
+        System.out.println("Ingrese la masa del planeta: ");
+        masa = entrada.nextDouble();
+        
+        System.out.println("Ingrese el volumen del planeta: ");
+        volumen = entrada.nextDouble();
+        
+        System.out.println("Ingrese el diametro del planeta: ");
+        diámetro = entrada.nextInt();
+        
+        System.out.println("Ingrese la distancia al sol: ");
+        distanciaSol = entrada.nextInt();
+        
+               
+        Planeta p1 = new Planeta(nombre,cantidadSatélites,masa,volumen,diámetro,distanciaSol,tipoPlaneta.TERRESTRE,true);
+        System.out.println("*****************************************************");
+        p1.imprimir();        
+        System.out.println("Densidad del planeta = " + p1.calcularDensidad());
+        System.out.println("Es planeta exterior = " + p1.esPlanetaExterior());
+        System.out.println("*****************************************************");        
+    }
+}
+
+public class Planeta {
+    String nombre = null;
+    int cantidadSatélites = 0;
+    double masa = 0;
+    double volumen = 0;
+    int diámetro = 0;
+    int distanciaSol = 0;
+    tipoPlaneta tipo;
+    boolean esObservable = false;
+    
+    Planeta(String nombre, int cantidadSatélites, double masa, double volumen, int diámetro, int distanciaSol, tipoPlaneta tipo, boolean esObservable) {
+        this.nombre = nombre;
+        this.cantidadSatélites = cantidadSatélites;
+        this.masa = masa;
+        this.volumen = volumen;
+        this.diámetro = diámetro;
+        this.distanciaSol = distanciaSol;
+        this.tipo = tipo;
+        this.esObservable = esObservable;
+        }
+
+    void imprimir() {
+        System.out.println("Nombre del planeta = " + nombre);
+        System.out.println("Cantidad de satélites = " + cantidadSatélites);
+        System.out.println("Masa del planeta = " + masa);
+        System.out.println("Volumen del planeta = " + volumen);
+        System.out.println("Diámetro del planeta = " + diámetro);
+        System.out.println("Distancia al sol = " + distanciaSol);
+        System.out.println("Tipo de planeta = " + tipo);
+        System.out.println("Es observable = " + esObservable);
+        }
+
+    double calcularDensidad() {
+        return masa/volumen;
+    }
+
+    boolean esPlanetaExterior(){
+        float límite = (float) (149597870 * 3.4);        
+            if (distanciaSol > límite) {
+            return true;
+            } else {
+            return false;
+            }
+        }
+    
+}
+
+enum tipoPlaneta {GASEOSO, TERRESTRE, ENANO}
+
+---------------------------------- EJERCICIO 2.3 PAGINA 66 ----------------------------------
+
+import java.util.Scanner;
+
+public class Ejercicio23_Pag66 {   
+
+    public static void main(String args[]) {
+        String marca;
+        int modelo;
+        int motor;
+        int númeroPuertas;
+        int cantidadAsientos;
+        int velocidadMáxima;
+
+        Scanner entrada = new Scanner(System.in);
+
+        System.out.println("Ingrese la marca del carro: ");    
+        marca = entrada.next();
+
+        System.out.println("Ingrese el modelo del carro: ");
+        modelo = entrada.nextInt();
+
+        System.out.println("Ingrese el motor: ");
+        motor = entrada.nextInt();
+
+        System.out.println("Ingrese el número de puertas: ");
+        númeroPuertas = entrada.nextInt();
+
+        System.out.println("Ingrese la cantidad de asientos: ");
+        cantidadAsientos = entrada.nextInt();
+
+        System.out.println("Ingrese la velocidad máxima: ");
+        velocidadMáxima = entrada.nextInt();
+        
+        Automovil auto1 = new Automovil(marca,modelo,motor,tipoCom.DIESEL,tipoA.EJECUTIVO,númeroPuertas,cantidadAsientos,velocidadMáxima,tipoColor.NEGRO);
+        auto1.imprimir();
+        auto1.setVelocidadActual(100);
+        System.out.println("Velocidad actual = " + auto1.velocidadActual);
+        System.out.println("Acelerando...");
+        auto1.acelerar(20);
+        System.out.println("Velocidad actual = " + auto1.velocidadActual);
+        System.out.println("Desacelerando...");
+        auto1.desacelerar(50);
+        System.out.println("Velocidad actual = " + auto1.velocidadActual);
+        System.out.println("Frenando...");
+        auto1.frenar();
+        System.out.println("Velocidad actual = " + auto1.velocidadActual);
+    }
+}
+
+public class Automovil {
+    String marca;
+    int modelo;
+    int motor;    
+    tipoCom tipoCombustible;    
+    tipoA tipoAutomóvil;
+    int númeroPuertas;
+    int cantidadAsientos;
+    int velocidadMáxima;
+    tipoColor color;
+    int velocidadActual = 0;
+    
+    Automovil(String marca, int modelo, int motor, tipoCom tipoCombustible, tipoA tipoAutomóvil, int númeroPuertas, int cantidadAsientos, int velocidadMáxima, tipoColor color) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.motor = motor;
+        this.tipoCombustible = tipoCombustible;
+        this.tipoAutomóvil = tipoAutomóvil;
+        this.númeroPuertas = númeroPuertas;
+        this.cantidadAsientos = cantidadAsientos;
+        this.velocidadMáxima = velocidadMáxima;
+        this.color = color;
+    }
+    
+    String getMarca() {
+        return marca;
+    }
+    
+    int getModelo() {
+        return modelo;
+    }
+    
+    int getMotor() {
+        return motor;
+    }
+    
+    tipoCom getTipoCombustible() {
+        return tipoCombustible;
+    }
+    
+    tipoA getTipoAutomóvil() {
+        return tipoAutomóvil;
+    }
+    
+    int getNúmeroPuertas() {
+        return númeroPuertas;
+    }
+    
+    int getCantidadAsientos() {
+        return cantidadAsientos;
+    }
+    
+    int getVelocidadMáxima() {
+        return velocidadMáxima;
+    }
+    
+    tipoColor getColor() {
+        return color;
+    }
+    
+    int getVelocidadActual() {
+        return velocidadActual;
+    }
+    
+    void setMarca(String marca) {
+        this.marca = marca;
+    }
+    
+    void setModelo(int modelo) {
+        this.modelo = modelo;
+    }
+    
+    void setMotor(int motor) {
+        this.motor = motor;
+    }
+    
+    void setTipoCombustible(tipoCom tipoCombustible) {
+        this.tipoCombustible = tipoCombustible;
+    }
+    
+    void setTipoAutomóvil(tipoA tipoAutomóvil) {
+        this.tipoAutomóvil = tipoAutomóvil;
+    }
+    
+    void setNúmeroPuertas(int númeroPuertas) {
+        this.númeroPuertas = númeroPuertas;
+    }
+    
+    void setCantidadAsientos(int cantidadAsientos) {
+        this.cantidadAsientos = cantidadAsientos;
+    }
+    
+    void setVelocidadMáxima(int velocidadMáxima) {
+        this.velocidadMáxima = velocidadMáxima;
+    }
+    
+    void setColor(tipoColor color) {
+        this.color = color;
+    }
+    
+    void setVelocidadActual(int velocidadActual) {
+        this.velocidadActual = velocidadActual;
+    }
+    
+    void acelerar(int incrementoVelocidad) {
+        if (velocidadActual + incrementoVelocidad < velocidadMáxima) {
+        velocidadActual = velocidadActual + incrementoVelocidad;
+        } else {
+        System.out.println("No se puede incrementar a una velocidad superior a la máxima del automóvil.");
+        }
+    }
+    
+    void desacelerar(int decrementoVelocidad) {        
+        if ((velocidadActual - decrementoVelocidad) > 0) {
+        velocidadActual = velocidadActual - decrementoVelocidad;
+        } else {
+        System.out.println("No se puede decrementar a una velocidad negativa.");
+        }
+    }
+    
+    void frenar() {
+        velocidadActual = 0;
+    }
+    
+    double calcularTiempoLlegada(int distancia) {
+        return distancia/velocidadActual;
+    }
+    
+    void imprimir() {
+        System.out.println("Marca = " + marca);
+        System.out.println("Modelo = " + modelo);
+        System.out.println("Motor = " + motor);
+        System.out.println("Tipo de combustible = " + tipoCombustible);
+        System.out.println("Tipo de automóvil = " + tipoAutomóvil);
+        System.out.println("Número de puertas = " + númeroPuertas);
+        System.out.println("Cantidad de asientos = " + cantidadAsientos);
+        System.out.println("Velocida máxima = " + velocidadMáxima);
+        System.out.println("Color = " + color);
+    }
+}
+
+enum tipoA {CIUDAD, SUBCOMPACTO, COMPACTO, FAMILIAR, EJECUTIVO, SUV}
+
+enum tipoColor {BLANCO, NEGRO, ROJO, NARANJA, AMARILLO, VERDE, AZUL, VIOLETA}
+
+enum tipoCom {GASOLINA, BIOETANOL, DIESEL, BIODISESEL, GAS_NATURAL}
+
+---------------------------------- EJERCICIO 2.4 PAGINA 86 ----------------------------------
+
+import java.util.Scanner;
+
+public class PruebaFiguras {
+
+    public static void main(String[] args) {
+        int radioCirculo;
+        int baseRectangulo;
+        int alturaRectangulo;
+        int ladoCuadrado;
+        int baseTrianguloRectangulo;
+        int alturaTrianguloRectangulo;
+        
+        Scanner entrada = new Scanner(System.in);
+
+        System.out.println("Ingrese el radio del círculo: ");    
+        radioCirculo = entrada.nextInt();
+        
+        System.out.println("Ingrese la base del rectángulo: ");    
+        baseRectangulo = entrada.nextInt();
+        
+        System.out.println("Ingrese la altura del rectángulo: ");    
+        alturaRectangulo = entrada.nextInt();
+        
+        System.out.println("Ingrese el lado del cuadrado: ");    
+        ladoCuadrado = entrada.nextInt();
+        
+        System.out.println("Ingrese la base del triángulo rectángulo: ");    
+        baseTrianguloRectangulo = entrada.nextInt();
+        
+        System.out.println("Ingrese la altura del triángulo: ");    
+        alturaTrianguloRectangulo = entrada.nextInt();
+        
+        Circulo figura1 = new Circulo(radioCirculo);
+        Rectangulo figura2 = new Rectangulo(baseRectangulo,alturaRectangulo);
+        Cuadrado figura3 = new Cuadrado(ladoCuadrado);
+        TrianguloRectangulo figura4 = new TrianguloRectangulo(baseTrianguloRectangulo,alturaTrianguloRectangulo);
+        
+        System.out.println("El área del círculo es = " + figura1.calcularArea());
+        System.out.println("El perímetro del círculo es = " + figura1.calcularPerímetro());
+        System.out.println();
+        System.out.println("El área del rectángulo es = " + figura2.calcularArea());
+        System.out.println("El perímetro del rectángulo es = " + figura2.calcularPerímetro());
+        System.out.println();
+        System.out.println("El área del cuadrado es = " + figura3.calcularArea());
+        System.out.println("El perímetro del cuadrado es = " + figura3.calcularPerímetro());
+        System.out.println();
+        System.out.println("El área del triángulo es = " + figura4.calcularArea());
+        System.out.println("El perímetro del triángulo es = " + figura4.calcularPerímetro());
+        figura4.determinarTipoTriángulo();
+        } 
+}
+
+public class Circulo {
+    int radio;
+    Circulo(int radio) {
+        this.radio = radio;
+    }    
+    double calcularArea() {
+        return Math.PI*Math.pow(radio,2);
+    }
+    double calcularPerímetro() {
+        return 2*Math.PI*radio;
+    }
+}
+
+public class Cuadrado {
+    int lado;
+    public Cuadrado(int lado) {
+        this.lado = lado;
+    }
+    double calcularArea() {
+        return lado*lado;
+    }
+    double calcularPerímetro() {
+        return (4*lado);
+    }    
+}
+
+public class Rectangulo {
+    int base;
+    int altura;
+    Rectangulo(int base, int altura) {
+        this.base = base;
+        this.altura = altura;
+    }
+    double calcularArea() {
+        return base * altura;
+    }
+    double calcularPerímetro() {
+        return (2 * base) + (2 * altura);
+    }    
+}
+
+public class TrianguloRectangulo {
+    int base;
+    int altura;
+    
+    TrianguloRectangulo(int base, int altura) {
+        this.base = base;
+        this.altura = altura;
+    }
+    
+    double calcularArea() {
+        return (base * altura / 2);
+    }
+    
+    double calcularPerímetro() {
+        return (base + altura + calcularHipotenusa());
+    }
+    
+    double calcularHipotenusa() {
+        return Math.pow(base*base + altura*altura, 0.5);
+    }
+    
+    void determinarTipoTriángulo() {
+        if ((base == altura) && (base == calcularHipotenusa()) && (altura == calcularHipotenusa()))
+            System.out.println("Es un triángulo equilátero");
+        else if ((base != altura) && (base != calcularHipotenusa()) && (altura != calcularHipotenusa()))
+            System.out.println("Es un triángulo escaleno");
+        else
+            System.out.println("Es un triángulo isósceles");
+    }    
+}
+
+---------------------------------- EJERCICIO 2.4 PAGINA 86 ----------------------------------
+
+import java.util.Scanner;
+
+public class Ejercicio25_Pag95 {
+
+    public static void main(String[] args) {
+        String nombresTitular;
+        String apellidosTitular;
+        int numeroCuenta;
+        
+        Scanner entrada = new Scanner(System.in);        
+
+        System.out.println("Ingrese el nombre del titular: ");    
+        nombresTitular = entrada.next();
+        
+        System.out.println("Ingrese el apellido del titular: ");    
+        apellidosTitular = entrada.next();
+        
+        System.out.println("Ingrese el número de cuenta: ");    
+        numeroCuenta = entrada.nextInt();
+        
+        CuentaBancaria cuenta = new CuentaBancaria(nombresTitular,apellidosTitular,numeroCuenta,tipo.AHORROS);
+            cuenta.imprimir();
+            System.out.println("");
+            System.out.println("Consignación en curso...");
+            cuenta.consignar(200000);
+            System.out.println("Consignación en curso...");
+            cuenta.consignar(300000);
+            System.out.println("Retiro en curso...");
+            cuenta.retirar(400000);
+    }
+}
+
+public class CuentaBancaria {    
+    String nombresTitular;
+    String apellidosTitular;
+    int númeroCuenta;
+    tipo tipoCuenta;
+    float saldo = 0;
+    
+    CuentaBancaria(String nombresTitular, String apellidosTitular, int numeroCuenta, tipo tipoCuenta) {
+        this.nombresTitular = nombresTitular;
+        this.apellidosTitular = apellidosTitular;
+        this.númeroCuenta = numeroCuenta;
+        this.tipoCuenta = tipoCuenta;
+    }
+    
+    void imprimir() {
+        System.out.println("Nombres del titular = " + nombresTitular);
+        System.out.println("Apellidos del titular = " + apellidosTitular);
+        System.out.println("Número de cuenta = " + númeroCuenta);
+        System.out.println("Tipo de cuenta = " + tipoCuenta);
+        System.out.println("Saldo = " + saldo);
+    }   
+    
+    void consultarSaldo() {
+        System.out.println("El saldo actual es = " + saldo);
+    }
+    
+    boolean consignar(int valor) {
+        if (valor > 0) {
+            saldo = saldo + valor;
+            System.out.println("Se ha consignado $" + valor + " en la cuenta. El nuevo saldo es $" + saldo);
+            return true;
+        } else {
+            System.out.println("El valor a consignar debe ser mayor que cero.");
+            return false;
+        }
+    }
+    
+    boolean retirar(int valor) {
+        if ((valor > 0) && (valor <= saldo)) {
+            saldo = saldo - valor;
+            System.out.println("Se ha retirado $" + valor + " en la cuenta. El nuevo saldo es $" + saldo);
+            return true;
+        } else {
+            System.out.println("El valor a retirar debe ser menor que el saldo actual.");
+        return false;
+        }
+    }
+}
+
+enum tipo {AHORROS, CORRIENTE}
